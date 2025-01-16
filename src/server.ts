@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import path from 'path';
+import router from './routes';
 
 const server = express();
 
@@ -36,7 +37,7 @@ server.use(bodyParser.urlencoded({ extended: true })); // Para datos codificados
 server.use(express.static(path.join(__dirname, 'public')));
 
 // Usar el router para manejar las rutas
-// server.use(router);
+server.use(router);
 
 // Middleware de manejo de errores.
 server.use((err: any, req: Request, res: Response, next: NextFunction) => {
